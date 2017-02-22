@@ -110,13 +110,20 @@ FString UUnrealTinyXmlNode::GetNodeValue()
 	return UTF8_TO_TCHAR(Node->ToElement()->GetText());
 }
 
-UUnrealTinyXmlNode* UUnrealTinyXmlNode::GetFirstChildNode()
+UUnrealTinyXmlNode* UUnrealTinyXmlNode::GetFirstChildNode(const int SearchDeep)
 {
 	if (!IsValid())
 	{
 		return NULL;
 	}
 	const XMLNode* FirstChild = Node->FirstChild();
+	int counter = 1;
+	while (counter < SearchDeep)
+	{
+		FirstChild = FirstChild->FirstChild();
+		counter++;
+	}
+
 	if (FirstChild == nullptr)
 	{
 		return NULL;
@@ -138,10 +145,8 @@ UUnrealTinyXmlNode* UUnrealTinyXmlNode::FindChildNodeByNodeName(const FString& N
 
 	while (TempNode != nullptr)
 	{
-
 		if (strcmp(TempNode->ToElement()->Name(), TCHAR_TO_UTF8(*NameToSearch))  == 0 )
 		{
-			UE_LOG(LogTemp, Warning, TEXT("%s"),UTF8_TO_TCHAR(TempNode->ToElement()->Name()));
 			counter++;
 			if (counter >= loc)
 				return UUnrealTinyXmlNode::Create(XmlFile, TempNode);

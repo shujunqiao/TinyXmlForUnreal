@@ -53,7 +53,7 @@ public:
 	* Gets the first child of this node which can be iterated into with GetNextNode, can return NULL.
 	*/
 	UFUNCTION(BlueprintCallable, Category = "luochuanyuewu|TinyXml")
-		UUnrealTinyXmlNode* GetFirstChildNode();
+		UUnrealTinyXmlNode* GetFirstChildNode(const int SearchDeep=1);
 
 	/**
 	* Find first(or "loc") child  node of this node which has the same name as "NameToSearch",Will return Null if can't find.
