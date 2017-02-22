@@ -36,7 +36,7 @@ UUnrealTinyXmlNode* UUnrealTinyXmlNode::GetNextNode(int Step /*= 1*/)
 	{
 		return NULL;
 	}
-	
+
 	//找到下一个
 	const XMLNode* NextNode = Node->NextSibling();
 
@@ -101,7 +101,7 @@ UUnrealTinyXmlNode* UUnrealTinyXmlNode::GetParentNode()
 	return UUnrealTinyXmlNode::Create(XmlFile, ParentNode);
 }
 
-FString UUnrealTinyXmlNode::GetValue()
+FString UUnrealTinyXmlNode::GetNodeValue()
 {
 	if (!IsValid())
 	{
@@ -124,6 +124,35 @@ UUnrealTinyXmlNode* UUnrealTinyXmlNode::GetFirstChildNode()
 	return UUnrealTinyXmlNode::Create(XmlFile, FirstChild);
 }
 
+UUnrealTinyXmlNode* UUnrealTinyXmlNode::FindChildNodeByNodeName(const FString& NameToSearch, const int loc)
+{
+	if (!IsValid())
+	{
+		return NULL;
+	}
+	const XMLNode* TempNode = Node->FirstChild();
+	if (TempNode == nullptr)
+		return nullptr;
+
+	int counter = 0;
+
+	while (TempNode != nullptr)
+	{
+
+		if (strcmp(TempNode->ToElement()->Name(), TCHAR_TO_UTF8(*NameToSearch))  == 0 )
+		{
+			UE_LOG(LogTemp, Warning, TEXT("%s"),UTF8_TO_TCHAR(TempNode->ToElement()->Name()));
+			counter++;
+			if (counter >= loc)
+				return UUnrealTinyXmlNode::Create(XmlFile, TempNode);
+		}
+		TempNode = TempNode->NextSibling();
+	}
+
+	return NULL;
+
+}
+
 FString UUnrealTinyXmlNode::GetNodeName()
 {
 	if (!IsValid())
@@ -140,6 +169,5 @@ FString UUnrealTinyXmlNode::GetAttributeValue(const FString& AttributeName)
 	{
 		return TEXT("");
 	}
-
 	return UTF8_TO_TCHAR(Node->ToElement()->Attribute(TCHAR_TO_UTF8(*AttributeName)));
 }

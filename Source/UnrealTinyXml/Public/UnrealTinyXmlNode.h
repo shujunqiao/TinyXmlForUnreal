@@ -42,13 +42,12 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "luochuanyuewu|TinyXml")
 		UUnrealTinyXmlNode* GetParentNode();
 
-
-
 	/**
 	* Gets the value of the node.
 	*/
 	UFUNCTION(BlueprintPure, Category = "luochuanyuewu|TinyXml")
-		FString GetValue();
+		FString GetNodeValue();
+
 
 	/**
 	* Gets the first child of this node which can be iterated into with GetNextNode, can return NULL.
@@ -57,13 +56,21 @@ public:
 		UUnrealTinyXmlNode* GetFirstChildNode();
 
 	/**
+	* Find first(or "loc") child  node of this node which has the same name as "NameToSearch",Will return Null if can't find.
+	*/
+	UFUNCTION(BlueprintCallable, Category = "luochuanyuewu|TinyXml")
+		UUnrealTinyXmlNode* FindChildNodeByNodeName(const FString& NameToSearch,const int loc=1);
+
+	/**
 	* Gets the name of current node, can return NULL.
 	*/
 	UFUNCTION(BlueprintPure, Category = "luochuanyuewu|TinyXml")
 		FString GetNodeName();
 
 	/**
-	* Gets the name of current node, can return NULL.
+	* Given an attribute name,returns the value
+    	for the attribute of that name, or null if none
+    	exists
 	*/
 	UFUNCTION(BlueprintPure, Category = "luochuanyuewu|TinyXml")
 		FString GetAttributeValue(const FString& AttributeName);
