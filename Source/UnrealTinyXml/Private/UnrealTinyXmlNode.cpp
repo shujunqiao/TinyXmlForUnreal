@@ -29,7 +29,7 @@ UUnrealTinyXmlNode* UUnrealTinyXmlNode::Create(TSharedPtr<XMLDocument> XmlFile, 
 	return Instance;
 }
 
-UUnrealTinyXmlNode* UUnrealTinyXmlNode::GetNextNode(int Step = 1)
+UUnrealTinyXmlNode* UUnrealTinyXmlNode::GetNextNode(int Step /*= 1*/)
 {
 	//检查错误
 	if (!IsValid() || Step <= 0)
@@ -55,11 +55,36 @@ UUnrealTinyXmlNode* UUnrealTinyXmlNode::GetNextNode(int Step = 1)
 	}
 	else
 		return UUnrealTinyXmlNode::Create(XmlFile, NextNode);
-
-
-
 }
 
+
+UUnrealTinyXmlNode* UUnrealTinyXmlNode::GetPreviousNode(int Step /*= 1*/)
+{
+	//检查错误
+	if (!IsValid() || Step <= 0)
+	{
+		return NULL;
+	}
+
+	//找到下一个
+	const XMLNode* NextNode = Node->PreviousSibling();
+
+	if (NextNode == nullptr)
+		return NULL;
+	//如果要找不止一个,则继续找
+	if (Step > 1)
+	{
+		for (int i = 2; i <= Step; i++)
+		{
+			if (NextNode->PreviousSibling() == nullptr)
+				break;
+			NextNode = NextNode->PreviousSibling();
+		}
+		return UUnrealTinyXmlNode::Create(XmlFile, NextNode);
+	}
+	else
+		return UUnrealTinyXmlNode::Create(XmlFile, NextNode);
+}
 
 UUnrealTinyXmlNode* UUnrealTinyXmlNode::GetParentNode()
 {
@@ -67,7 +92,7 @@ UUnrealTinyXmlNode* UUnrealTinyXmlNode::GetParentNode()
 	{
 		return NULL;
 	}
-	XMLNode* ParentNode = Node->Parent();
+	const XMLNode* ParentNode = Node->Parent();
 	if (ParentNode == nullptr)
 	{
 		return NULL;

@@ -25,11 +25,17 @@ public:
 	static UUnrealTinyXmlNode* Create(TSharedPtr<XMLDocument> XmlFile, const XMLNode* Node);
 	
 	/**
-	* Gets the next (Step) node in a list of nodes, can return NULL.if exceeded,return last one.
+	* Gets next (Step) node in a list of nodes, can return NULL.if exceeded,return last one.
 	*/
 	UFUNCTION(BlueprintCallable, Category = "luochuanyuewu|TinyXml")
 		UUnrealTinyXmlNode* GetNextNode(int Step = 1);
-	
+	/**
+	* Gets previous (Step) node in a list of nodes, can return NULL.if exceeded,return last one.
+	*/
+	UFUNCTION(BlueprintCallable, Category = "luochuanyuewu|TinyXml")
+		UUnrealTinyXmlNode* GetPreviousNode(int Step = 1);
+
+
 	/**
 	* Gets the next node in a list of nodes, can return NULL.
 	*/
