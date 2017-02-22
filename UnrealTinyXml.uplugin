@@ -1,0 +1,24 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "1.0",
+	"FriendlyName": "UnrealTinyXml",
+	"Description": "A warpper of tinxml for unreal engine 4.",
+	"Category": "Utility",
+	"CreatedBy": "luochuanyuewu",
+	"CreatedByURL": "http://luochuanyuewu.com",
+	"DocsURL": "",
+	"MarketplaceURL": "",
+	"SupportURL": "",
+	"EnabledByDefault": true,
+	"CanContainContent": true,
+	"IsBetaVersion": false,
+	"Installed": false,
+	"Modules": [
+		{
+			"Name": "UnrealTinyXml",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		}
+	]
+}
