@@ -1,7 +1,6 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #pragma once
-//#include "Engine.h"
 #include "CoreUObject.h"
 #include "tinyxml2.h"
 #include "UnrealTinyXmlNode.generated.h"
@@ -59,7 +58,7 @@ public:
 	* Find first(or "loc") child  node of this node which has the same name as "NameToSearch",Will return Null if can't find.
 	*/
 	UFUNCTION(BlueprintCallable, Category = "luochuanyuewu|TinyXml")
-		UUnrealTinyXmlNode* FindChildNodeByNodeName(const FString& NameToSearch,const int loc=1);
+		UUnrealTinyXmlNode* FindChildNodeByName(const FString& NameToSearch,const int loc=1);
 
 	/**
 	* Gets the name of current node, can return NULL.
@@ -74,4 +73,6 @@ public:
 	*/
 	UFUNCTION(BlueprintPure, Category = "luochuanyuewu|TinyXml")
 		FString GetAttributeValue(const FString& AttributeName);
+
+
 };

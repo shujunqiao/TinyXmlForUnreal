@@ -28,16 +28,11 @@ class UUnrealTinyXmlBPLibrary : public UBlueprintFunctionLibrary
 {
 	GENERATED_UCLASS_BODY()
 
-	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Execute Sample function", Keywords = "UnrealTinyXml sample test testing"), Category = "UnrealTinyXmlTesting")
-	static float UnrealTinyXmlSampleFunction(float Param);
-
-	UFUNCTION(BlueprintCallable,Category = "luochuanyuewu|TinyXml")
-		static int TestXML(const FString& file);
-
-
 	/**
-	* Parses XML file and returns the root node, returns NULL if it can't be parsed.
+	* Create a instance of TinyXmlDocument which can load xml,or close xml.
 	*/
-	UFUNCTION(BlueprintCallable, Category = "luochuanyuewu|TinyXml", Meta = (DisplayName = "Parse Xml From File"))
-		static UUnrealTinyXmlNode* ParseXmlFile(const FString& File);
+	UFUNCTION(BlueprintCallable, Category = "luochuanyuewu|TinyXml", Meta = (DisplayName = "Create New XmlDocument"))
+		static UUnrealTinyXmlDocument* NewXmlDocument();
+
+
 };

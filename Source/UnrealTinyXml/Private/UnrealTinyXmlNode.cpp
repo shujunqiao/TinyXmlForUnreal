@@ -42,6 +42,7 @@ UUnrealTinyXmlNode* UUnrealTinyXmlNode::GetNextNode(int Step /*= 1*/)
 
 	if (NextNode == nullptr)
 		return NULL;
+
 	//如果要找不止一个,则继续找
 	if (Step > 1)
 	{
@@ -131,7 +132,7 @@ UUnrealTinyXmlNode* UUnrealTinyXmlNode::GetFirstChildNode(const int SearchDeep)
 	return UUnrealTinyXmlNode::Create(XmlFile, FirstChild);
 }
 
-UUnrealTinyXmlNode* UUnrealTinyXmlNode::FindChildNodeByNodeName(const FString& NameToSearch, const int loc)
+UUnrealTinyXmlNode* UUnrealTinyXmlNode::FindChildNodeByName(const FString& NameToSearch, const int loc)
 {
 	if (!IsValid())
 	{
@@ -176,3 +177,4 @@ FString UUnrealTinyXmlNode::GetAttributeValue(const FString& AttributeName)
 	}
 	return UTF8_TO_TCHAR(Node->ToElement()->Attribute(TCHAR_TO_UTF8(*AttributeName)));
 }
+
