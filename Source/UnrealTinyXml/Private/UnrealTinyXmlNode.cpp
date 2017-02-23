@@ -11,7 +11,7 @@ bool UUnrealTinyXmlNode::IsValid()
 	return (XmlFile.IsValid()) && (Node != nullptr);
 }
 
-UUnrealTinyXmlNode* UUnrealTinyXmlNode::Create(TSharedPtr<XMLDocument> XmlFile, XMLNode* Node)
+UUnrealTinyXmlNode* UUnrealTinyXmlNode::Create(TSharedPtr<UUnrealTinyXmlDocument> XmlFile, XMLNode* Node)
 {
 	//创建Node
 	UUnrealTinyXmlNode* Instance = NewObject<UUnrealTinyXmlNode>();
@@ -20,7 +20,7 @@ UUnrealTinyXmlNode* UUnrealTinyXmlNode::Create(TSharedPtr<XMLDocument> XmlFile, 
 	return Instance;
 }
 
-UUnrealTinyXmlNode* UUnrealTinyXmlNode::Create(TSharedPtr<XMLDocument> XmlFile, const XMLNode* Node)
+UUnrealTinyXmlNode* UUnrealTinyXmlNode::Create(TSharedPtr<UUnrealTinyXmlDocument> XmlFile, const XMLNode* Node)
 {
 	//创建Node
 	UUnrealTinyXmlNode* Instance = NewObject<UUnrealTinyXmlNode>();

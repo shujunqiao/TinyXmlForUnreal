@@ -43,8 +43,7 @@ UUnrealTinyXmlNode* UUnrealTinyXmlDocument::GetRootNode()
 		return nullptr;
 	}
 
-	TSharedPtr<XMLDocument> XmlFile = MakeShareable(XmlFilePtr);
-
+	TSharedPtr<UUnrealTinyXmlDocument> XmlFile = MakeShareable(this);
 	return UUnrealTinyXmlNode::Create(XmlFile, RootNode);
 }
 
