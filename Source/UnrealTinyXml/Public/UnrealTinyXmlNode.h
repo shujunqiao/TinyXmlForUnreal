@@ -9,7 +9,7 @@ using namespace tinyxml2;
 class UUnrealTinyXmlDocument;
 
 /**
- * 
+ *
  */
 UCLASS(BlueprintType)
 class UNREALTINYXML_API UUnrealTinyXmlNode : public UObject
@@ -24,7 +24,7 @@ public:
 
 	static UUnrealTinyXmlNode* Create(TSharedPtr<UUnrealTinyXmlDocument> XmlFile, XMLNode* Node);
 	static UUnrealTinyXmlNode* Create(TSharedPtr<UUnrealTinyXmlDocument> XmlFile, const XMLNode* Node);
-	
+
 	/**
 	* Gets next (Step) node in a list of nodes, can return NULL.if exceeded,return last one.
 	*/
@@ -35,7 +35,6 @@ public:
 	*/
 	UFUNCTION(BlueprintCallable, Category = "luochuanyuewu|TinyXml")
 		UUnrealTinyXmlNode* GetPreviousNode(int Step = 1);
-
 
 	/**
 	* Gets the next node in a list of nodes, can return NULL.
@@ -49,18 +48,17 @@ public:
 	UFUNCTION(BlueprintPure, Category = "luochuanyuewu|TinyXml")
 		FString GetNodeValue();
 
-
 	/**
 	* Gets the first child of this node which can be iterated into with GetNextNode, can return NULL.
 	*/
 	UFUNCTION(BlueprintCallable, Category = "luochuanyuewu|TinyXml")
-		UUnrealTinyXmlNode* GetFirstChildNode(const int SearchDeep=1);
+		UUnrealTinyXmlNode* GetFirstChildNode(const int SearchDeep = 1);
 
 	/**
 	* Find first(or "loc") child  node of this node which has the same name as "NameToSearch",Will return Null if can't find.
 	*/
 	UFUNCTION(BlueprintCallable, Category = "luochuanyuewu|TinyXml")
-		UUnrealTinyXmlNode* FindChildNodeByName(const FString& NameToSearch,const int loc=1);
+		UUnrealTinyXmlNode* FindChildNodeByName(const FString& NameToSearch, const int loc = 1);
 
 	/**
 	* Gets the name of current node, can return NULL.
@@ -70,11 +68,9 @@ public:
 
 	/**
 	* Given an attribute name,returns the value
-    	for the attribute of that name, or null if none
-    	exists
+		for the attribute of that name, or null if none
+		exists
 	*/
 	UFUNCTION(BlueprintPure, Category = "luochuanyuewu|TinyXml")
 		FString GetAttributeValue(const FString& AttributeName);
-
-
 };

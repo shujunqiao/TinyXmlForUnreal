@@ -5,7 +5,6 @@
 
 
 
-
 bool UUnrealTinyXmlDocument::LoadXmlFie(const FString& File)
 {
 	//获取Xml文件路径
@@ -49,16 +48,7 @@ UUnrealTinyXmlNode* UUnrealTinyXmlDocument::GetRootNode()
 
 void UUnrealTinyXmlDocument::Clear()
 {
-	//UE_LOG(LogTemp, Warning, TEXT("是否有效:%d"), XmlFile.IsValid());
-	//UE_LOG(LogTemp, Warning, TEXT("引用总数:%d"), XmlFile.GetSharedReferenceCount());
-	//UE_LOG(LogTemp, Warning, TEXT("是否唯一:%d"), XmlFile.IsUnique());
-	////Node = nullptr;
-	//XMLDocument* doc = XmlFile.Get();
-	//doc->Clear();
-	//doc = nullptr;
-	//XmlFile.Reset();
-	//UE_LOG(LogTemp, Warning, TEXT("是否有效:%d"), XmlFile.IsValid());
-	//UE_LOG(LogTemp, Warning, TEXT("删除后引用总数:%d"), XmlFile.GetSharedReferenceCount());
-	//UE_LOG(LogTemp, Warning, TEXT("是否唯一:%d"), XmlFile.IsUnique());
+	this->XmlFilePtr->Clear();
+	UE_LOG(LogTemp, Warning, TEXT("清理完毕"));
 	return;
 }

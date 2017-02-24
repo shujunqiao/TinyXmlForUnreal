@@ -17,7 +17,7 @@ class UNREALTINYXML_API UUnrealTinyXmlDocument : public UObject
 	
 public:
 	XMLDocument* XmlFilePtr; // 指向Xml文档对象的指针
-	TArray<UUnrealTinyXmlNode*> AllNodes; // 用于跟踪所有被创建的属于该文档的节点
+
 	/**
 	* Load xml file from disk, return ture if load successful, or it will be false.
 	*/

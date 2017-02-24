@@ -178,3 +178,4 @@ FString UUnrealTinyXmlNode::GetAttributeValue(const FString& AttributeName)
 	return UTF8_TO_TCHAR(Node->ToElement()->Attribute(TCHAR_TO_UTF8(*AttributeName)));
 }
 
+
