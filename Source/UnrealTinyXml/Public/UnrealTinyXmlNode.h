@@ -6,8 +6,6 @@
 #include "UnrealTinyXmlNode.generated.h"
 using namespace tinyxml2;
 
-class UUnrealTinyXmlDocument;
-
 /**
  *
  */
@@ -16,14 +14,14 @@ class UNREALTINYXML_API UUnrealTinyXmlNode : public UObject
 {
 	GENERATED_BODY()
 public:
-	TSharedPtr<UUnrealTinyXmlDocument> XmlFile; // keeps everything in memory
+	TSharedPtr<XMLDocument> XmlFile; // keeps everything in memory
 	const XMLNode* Node = NULL;
 
 public:
 	bool IsValid();
 
-	static UUnrealTinyXmlNode* Create(TSharedPtr<UUnrealTinyXmlDocument> XmlFile, XMLNode* Node);
-	static UUnrealTinyXmlNode* Create(TSharedPtr<UUnrealTinyXmlDocument> XmlFile, const XMLNode* Node);
+	static UUnrealTinyXmlNode* Create(TSharedPtr<XMLDocument> XmlFile, XMLNode* Node);
+	static UUnrealTinyXmlNode* Create(TSharedPtr<XMLDocument> XmlFile, const XMLNode* Node);
 
 	/**
 	* Gets next (Step) node in a list of nodes, can return NULL.if exceeded,return last one.
