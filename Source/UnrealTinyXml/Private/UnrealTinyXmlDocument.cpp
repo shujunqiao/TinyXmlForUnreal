@@ -5,6 +5,11 @@
 
 
 
+bool UUnrealTinyXmlDocument::IsValid()
+{
+	return this->XmlFilePtr != nullptr;
+}
+
 bool UUnrealTinyXmlDocument::LoadXmlFie(const FString& File)
 {
 	//获取Xml文件路径
@@ -32,6 +37,11 @@ bool UUnrealTinyXmlDocument::LoadXmlFie(const FString& File)
 
 UUnrealTinyXmlNode* UUnrealTinyXmlDocument::GetRootNode()
 {
+	if (!IsValid())
+	{
+		UE_LOG(LogTemp, Error, TEXT("Xml文档必须成功加载一个xml文件后，才能获取节点"));
+	}
+
 	//获取根结点
 	tinyxml2::XMLNode* RootNode = XmlFilePtr->RootElement();
 
